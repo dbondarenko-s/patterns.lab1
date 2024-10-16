@@ -1,10 +1,26 @@
-﻿namespace Patterns.Lab1
+﻿using Patterns.Lab1.Interfaces;
+
+namespace Patterns.Lab1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Builder builder = new ConcreteBuilder();
+
+            Director director = new Director(builder);
+
+            director.Construct();
+
+            builder.GetResult();
+
+            builder = new MemoryBuilder();
+
+            director = new Director(builder);
+
+            director.Construct();
+
+            builder.GetResult();
         }
     }
 }
